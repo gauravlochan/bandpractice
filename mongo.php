@@ -8,6 +8,8 @@
   $db  = $m->$dbname;
   $col = $db->access;
 
+  echo "<li> DB name " . $db . "</li>";
+  
   # insert a document
   $visit = array( "ip" => $_SERVER["HTTP_X_FORWARDED_FOR"] );
   $col->insert($visit);
