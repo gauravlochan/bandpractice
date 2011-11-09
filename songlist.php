@@ -25,7 +25,6 @@ if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
-    $friends = $facebook->api('/$user/friends');
   } catch (FacebookApiException $e) {
     error_log($e);
     $user = null;
@@ -41,6 +40,7 @@ if ($user) {
 
 // This call will always work since we are fetching public data.
 $naitik = $facebook->api('/naitik');
+$friends = $facebook->api('/me/friends');
 
 ?>
 <!doctype html>
