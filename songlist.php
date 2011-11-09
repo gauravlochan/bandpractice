@@ -25,7 +25,7 @@ if ($user) {
   try {
     // Proceed knowing you have a logged in user who's authenticated.
     $user_profile = $facebook->api('/me');
-    $friends = $facebook->api('/me/friends');
+    $friends = $facebook->api('/$user/friends');
   } catch (FacebookApiException $e) {
     error_log($e);
     $user = null;
