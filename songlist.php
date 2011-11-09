@@ -34,13 +34,13 @@ if ($user) {
 // Login or logout url will be needed depending on current user state.
 if ($user) {
   $logoutUrl = $facebook->getLogoutUrl();
+  $friends = $facebook->api('/me/friends');
 } else {
   $loginUrl = $facebook->getLoginUrl();
 }
 
 // This call will always work since we are fetching public data.
 $naitik = $facebook->api('/naitik');
-$friends = $facebook->api('/me/friends');
 
 ?>
 <!doctype html>
