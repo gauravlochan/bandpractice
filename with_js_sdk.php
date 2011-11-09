@@ -1,10 +1,15 @@
 <?php
 
-require '../src/facebook.php';
+require 'facebook.php';
 
+// Provides access to app specific values such as your app id and app secret.
+// Defined in 'AppInfo.php'
+require_once('AppInfo.php');
+
+// Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
-  'appId'  => '191149314281714',
-  'secret' => '73b67bf1c825fa47efae70a46c18906b',
+  'appId'  => AppInfo::appID(),
+  'secret' => AppInfo::appSecret(),
 ));
 
 // See if there is a user from a cookie
