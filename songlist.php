@@ -91,6 +91,7 @@ $naitik = $facebook->api('/naitik');
         echo count($value) . ' Friends';
         echo '<hr />';
         echo '<ul id="friends">';
+        echo $value;
         foreach ($value as $fkey=>$fvalue) {
             echo '<li><img src="https://graph.facebook.com/' . $fvalue->id . '/picture" title="' . $fvalue->name . '"/></li>';
         }
