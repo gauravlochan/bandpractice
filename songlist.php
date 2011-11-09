@@ -93,7 +93,7 @@ $naitik = $facebook->api('/naitik');
         echo '<ul id="friends">';
     foreach ($data as $key=>$value) {
         echo $key;
-        echo '<li><img src="https://graph.facebook.com/' . $value['id'] . '/picture" title="' . $value['name'} . '"/></li>';
+        echo '<li><img src="https://graph.facebook.com/' . $value['id'] . '/picture" title="' . $value['name'] . '"/></li>';
     }
         echo '</ul>';
 
