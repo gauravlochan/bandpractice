@@ -41,8 +41,9 @@ if ($user) {
 
 // This call will always work since we are fetching public data.
 $naitik = $facebook->api('/naitik');
-
 ?>
+
+
 <!doctype html>
 <html xmlns:fb="http://www.facebook.com/2008/fbml">
   <head>
@@ -84,6 +85,18 @@ $naitik = $facebook->api('/naitik');
     <?php else: ?>
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
+    
+    <?php
+    foreach ($friends as $key=>$value) {
+        echo count($value) . ' Friends';
+        echo '<hr />';
+        echo '<ul id="friends">';
+        foreach ($value as $fkey=>$fvalue) {
+            echo '<li><img src="https://graph.facebook.com/' . $fvalue->id . '/picture" title="' . $fvalue->name . '"/></li>';
+        }
+        echo '</ul>';
+    }
+    ?>
 
     <h3>Public profile of Naitik</h3>
     <img src="https://graph.facebook.com/naitik/picture">
