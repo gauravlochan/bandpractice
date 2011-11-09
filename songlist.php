@@ -87,11 +87,11 @@ $naitik = $facebook->api('/naitik');
     <?php endif ?>
     
     <?php
-    foreach ($friends as $key=>$value) {
-        echo count($value) . ' Friends';
+    $data = $friends['data'];
+    echo count($data) . ' Friends';
+    foreach ($data as $key=>$value) {
         echo '<hr />';
         echo '<ul id="friends">';
-        echo $value;
         foreach ($value as $fkey=>$fvalue) {
             echo '<li><img src="https://graph.facebook.com/' . $fvalue->id . '/picture" title="' . $fvalue->name . '"/></li>';
         }
