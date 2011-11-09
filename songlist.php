@@ -8,7 +8,7 @@ require_once('AppInfo.php');
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
-  'appId'  => AppInfo::appID();,
+  'appId'  => AppInfo::appID(),
   'secret' => AppInfo::appSecret(),
 ));
 
