@@ -89,14 +89,14 @@ $naitik = $facebook->api('/naitik');
     <?php
     $data = $friends['data'];
     echo count($data) . ' Friends';
-    foreach ($data as $key=>$value) {
         echo '<hr />';
         echo '<ul id="friends">';
-        foreach ($value as $fkey=>$fvalue) {
-            echo '<li><img src="https://graph.facebook.com/' . $fvalue->id . '/picture" title="' . $fvalue->name . '"/></li>';
-        }
-        echo '</ul>';
+    foreach ($data as $key=>$value) {
+        echo $key;
+        echo '<li><img src="https://graph.facebook.com/' . $value['id'] . '/picture" title="' . $value['name'} . '"/></li>';
     }
+        echo '</ul>';
+
     ?>
 
     <h3>Public profile of Naitik</h3>
