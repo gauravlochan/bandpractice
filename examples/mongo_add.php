@@ -6,20 +6,20 @@
   # connect
   $m   = new Mongo(getenv("MONGOLAB_URI"));
   $db  = $m->$dbname;
-  $col = $db->access;
+  $col = $db->users;
 
   echo "<li> DB name " . $db . "</li>";
   
   # insert a document
-  $visit = array( "ip" => $_SERVER["HTTP_X_FORWARDED_FOR"] );
+  $visit = array( "id" => "777754824");
   $col->insert($visit);
 
   # print all existing documents
   $data = $col->find();
   foreach($data as $visit) {
-    echo "<li>" . $visit["ip"] . "</li>";
+    echo "<li>" . $visit["id"] . "</li>";
   }
 
   # disconnect
-  $m->close();
+  $m->close(); 	
 ?>
