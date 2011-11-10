@@ -5,16 +5,6 @@
  */
 class MongoHelper {
 
-  /*****************************************************************************
-   *
-   * These functions provide the unique identifiers that your app users.  These
-   * have been pre-populated for you, but you may need to change them at some
-   * point.  They are currently being stored in 'Environment Variables'.  To
-   * learn more about these, visit
-   *   'http://php.net/manual/en/function.getenv.php'
-   *
-   ****************************************************************************/
-
   /**
    * @return the mongo URI for this app
    */
@@ -30,10 +20,12 @@ class MongoHelper {
     return new Mongo(getenv("MONGOLAB_URI"));
   }
 
+
   public static function disconn($m) {
     $m->close();
   }
   
+
   /**
    * @return the db
    */
@@ -45,10 +37,14 @@ class MongoHelper {
     return $m->$dbname;
   }
 
+
+
   public static function getCollection($name) {
-    $db = getDb();
+    $db = MongoHelper::getDb();
     return $db->$name;
   }
+
+
 
   public static function printCollection($name) {
     $col = getCollection($name);
