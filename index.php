@@ -70,6 +70,8 @@ if ($token) {
   // This formats our home URL so that we can pass it as a web request
   $encoded_home = urlencode(AppInfo::getHome());
   $redirect_url = $encoded_home . 'close.php';
+  
+  $songlist_url = $encoded_home . 'songlist.php';
 
   // These two URL's are links to dialogs that you will be able to use to share
   // your app with others.  Look under the documentation for dialogs at
@@ -160,7 +162,8 @@ if ($token) {
         </div>
       </div>
     </header>
-    <section id="get-started">
+ 
+ <section id="get-started">
       <p>Welcome to your Facebook app, running on <span>heroku</span>!</p>
       <a href="http://devcenter.heroku.com/articles/facebook" class="button">Learn How to Edit This App</a>
     </section>
@@ -261,7 +264,9 @@ if ($token) {
       <h1>Learn More About Heroku &amp; Facebook Apps</h1>
       <ul>
         <li>
-          <a href="http://www.heroku.com/" class="icon heroku">Heroku</a>
+          <?php
+            echo('<a href="' .$songlist_url. '" class="icon heroku">Songlist</a>');
+          ?>
           <p>Learn more about <a href="http://www.heroku.com/">Heroku</a>, or read developer docs in the Heroku <a href="http://devcenter.heroku.com/">Dev Center</a>.</p>
         </li>
         <li>
