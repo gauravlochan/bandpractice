@@ -92,8 +92,7 @@ $jason = $facebook->api('/jasonzac');
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
     
-    <h3>Public profile of Jason</h3>
-    <img src="https://graph.facebook.com/jasonzac/picture">
-    <?php echo $jason['name']; ?>
+    <img src="https://graph.facebook.com/jasonzac/picture">I'll be watching you!
+
   </body>
 </html>
