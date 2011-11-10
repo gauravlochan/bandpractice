@@ -45,6 +45,8 @@ while( $cursor->hasNext() ) {
   echo "user " .$user_profile['id']. " exists in mongo";
 }
 
+$songcollection = MongoHelper::getCollection('songs');
+
 
 // Login or logout url will be needed depending on current user state.
 if ($user) {
@@ -55,7 +57,7 @@ if ($user) {
 }
 
 // This call will always work since we are fetching public data.
-$naitik = $facebook->api('/naitik');
+$jason = $facebook->api('/jasonzac');
 ?>
 
 
@@ -90,21 +92,8 @@ $naitik = $facebook->api('/naitik');
       <strong><em>You are not Connected.</em></strong>
     <?php endif ?>
     
-    <?php
-    if ($user):
-      $data = $friends['data'];
-      echo count($data) . ' Friends';
-      echo '<hr />';
-      echo '<ul id="friends">';
-      foreach ($data as $key=>$value) {
-        echo '<li><img src="https://graph.facebook.com/' . $value['id'] . '/picture" title="' . $value['name'] . '"/></li>';
-      }
-      echo '</ul>';
-    endif
-    ?>
-
-    <h3>Public profile of Naitik</h3>
-    <img src="https://graph.facebook.com/naitik/picture">
-    <?php echo $naitik['name']; ?>
+    <h3>Public profile of Jason</h3>
+    <img src="https://graph.facebook.com/jasonzac/picture">
+    <?php echo $jason['name']; ?>
   </body>
 </html>
