@@ -30,10 +30,10 @@ class MongoHelper {
    * @return the db
    */
   public static function getDb () {
-    $mongo_url = mongoUrl();
+    $mongo_url = MongoHelper::mongoUrl();
     $dbname = str_replace("/", "", $mongo_url["path"]);
 
-    $m = getConn();
+    $m = MongoHelper::getConn();
     return $m->$dbname;
   }
 
@@ -47,7 +47,7 @@ class MongoHelper {
 
 
   public static function printCollection($name) {
-    $col = getCollection($name);
+    $col = MongoHelper::getCollection($name);
 
     # print all existing documents
     $data = $col->find();
