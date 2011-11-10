@@ -45,12 +45,12 @@ class MongoDb {
     return $m->$dbname;
   }
 
-  public static getCollection($name) {
+  public static function getCollection($name) {
     $db = getDb();
     return $db->$name;
   }
 
-  public static printCollection($name) {
+  public static function printCollection($name) {
     $col = getCollection($name);
 
     # print all existing documents
