@@ -40,7 +40,7 @@ $cursor = $collection->find( $query );
 
 $user_exists = 0;
 while( $cursor->hasNext() ) {
-  $cursor->getNext()
+  $cursor->getNext();
   $user_exists = 1;
   echo "user " .$user_profile['id']. " exists in mongo";
 }
