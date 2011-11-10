@@ -42,7 +42,7 @@ $user_exists = 0;
 while( $cursor->hasNext() ) {
     var_dump( $cursor->getNext() );
     $user_exists = 1;
-    echo "user " .$user_profile['id']. " exists in mongo";
+    // echo "user " .$user_profile['id']. " exists in mongo";
 }
 
 // Login or logout url will be needed depending on current user state.
