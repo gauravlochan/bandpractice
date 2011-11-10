@@ -58,7 +58,7 @@ class MongoDb {
     foreach($data as $visit) {
       echo "<li>" . $visit["ip"] . "</li>";
     }
-
+  }
 }
 
 ?>
