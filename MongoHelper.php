@@ -3,7 +3,7 @@
 /**
  * This class provides helper methods around Mongo
  */
-class MongoDb {
+class MongoHelper {
 
   /*****************************************************************************
    *

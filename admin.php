@@ -5,7 +5,7 @@ require 'facebook.php';
 // Provides access to app specific values such as your app id and app secret.
 require_once('AppInfo.php');
 
-require_once('mongodb.php');
+require_once('MongoHelper.php');
 
 // Create our Application instance (replace this with your appId and secret).
 $facebook = new Facebook(array(
@@ -32,7 +32,7 @@ if ($user) {
   }
 }
 
-$collection = mongodb::getCollection('users');
+$collection = MongoHelper::getCollection('users');
 
 // query to see if a records in the 'users' collection matches the current users id
 $query = array( "id" => $user_profile['id'] );
