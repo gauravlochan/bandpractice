@@ -3,7 +3,6 @@
 require 'facebook.php';
 
 // Provides access to app specific values such as your app id and app secret.
-// Defined in 'AppInfo.php'
 require_once('AppInfo.php');
 
 // Create our Application instance (replace this with your appId and secret).
@@ -87,15 +86,16 @@ $naitik = $facebook->api('/naitik');
     <?php endif ?>
     
     <?php
-    $data = $friends['data'];
-    echo count($data) . ' Friends';
-        echo '<hr />';
-        echo '<ul id="friends">';
-    foreach ($data as $key=>$value) {
+    if ($user):
+      $data = $friends['data'];
+      echo count($data) . ' Friends';
+      echo '<hr />';
+      echo '<ul id="friends">';
+      foreach ($data as $key=>$value) {
         echo '<li><img src="https://graph.facebook.com/' . $value['id'] . '/picture" title="' . $value['name'] . '"/></li>';
-    }
-        echo '</ul>';
-
+      }
+      echo '</ul>';
+    endif
     ?>
 
     <h3>Public profile of Naitik</h3>
