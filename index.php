@@ -71,7 +71,7 @@ if ($token) {
   $encoded_home = urlencode(AppInfo::getHome());
   $redirect_url = $encoded_home . 'close.php';
   
-  $songlist_url = $encoded_home . 'songlist.php';
+  $songlist_url = AppInfo::getHome() . 'songlist.php';
 
   // These two URL's are links to dialogs that you will be able to use to share
   // your app with others.  Look under the documentation for dialogs at
