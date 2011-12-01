@@ -1,39 +1,72 @@
-Facebook/Heroku sample app -- PHP
-=================================
+Nathaniel School of Music Band Practice
+=======================================
 
-This is a sample app showing use of the Facebook Graph API, written in PHP, designed for deployment to [Heroku](http://www.heroku.com/).
+This is an app solving the problem of scheduling practice for the Nathaniel show.
 
-Run locally
------------
+It's my first facebook app + first PHP app so forgive all the sins i've committed.  
+(feel free to educate though)
 
-Configure Apache with a `VirtualHost` that points to the location of this code checkout on your system.
+Problem
+-------
 
-[Create an app on Facebook](https://developers.facebook.com/apps) and set the Website URL to your local VirtualHost.
+A bunch of school students (vocalists, guitarists, bassists, keyboardists, drummers) who
+are practising for the show, and putting on ~20 songs for the show.  A subset of musicians 
+sign up to do each song.  Musicians try to coordinate and come in to practice the songs, but
+obviously people have very different schedules and can't all come in at the same time.
 
-Copy the App ID and Secret from the Facebook app settings page into your `VirtualHost` config, something like:
+The problems I want to tackle are:
+- Coordination is fragmented/unreliable (post on facebook group, SMSs, phone calls)
+- All the musicians required for a song don't show up
+- Musicians don't know what songs will happen at the session and so can't prepare (mentally or otherwise)
+- A musician may show up and not have *any* folks to do his songs with - waste of a trip
 
-    <VirtualHost *:80>
-        DocumentRoot /Users/adam/Sites/myapp
-        ServerName myapp.localhost
-        SetEnv FACEBOOK_APP_ID 12345
-        SetEnv FACEBOOK_SECRET abcde
-    </VirtualHost>
 
-Restart Apache, and you should be able to visit your app at its local URL.
+Proposed Solution
+-----------------
+A facebook app that allows one to schedule a session, musicians can register for the session and
+can suggest songs to practise.  The app can also recommend songs based on the musicians present.
 
-Deploy to Heroku via Facebook integration
------------------------------------------
+A musician can then 'select' a song for a given session, in which case the app will indicate which
+musicians are NOT present to do the song.
 
-The easiest way to deploy is to create an app on Facebook and click Cloud Services -> Get Started, then choose PHP from the dropdown.  You can then `git clone` the resulting app from Heroku.
+Entities
+--------
+* Musician - name, facebook_id, contact number, instrument(s)
+* Song - musicians(s), state (proposed, practising, confirmed)
+* Session - date, musician(s), song(s)
 
-Deploy to Heroku directly
--------------------------
+Flow
+----
+Let's say songs are numbered from 1-20 and musicians are A-M
 
-If you prefer to deploy yourself, push this code to a new Heroku app on the Cedar stack, then copy the App ID and Secret into your config vars:
+Song 1 -> A + B + C + D + E
+Song 2 -> A + F + C + G + E
+Song 3 -> E + F + H + I
+Song 4 -> A + B + C + I
 
-    heroku create --stack cedar
-    git push heroku master
-    heroku config:add FACEBOOK_APP_ID=12345 FACEBOOK_SECRET=abcde
+Use case 1: Identify and contact missing musicians for a song.
 
-Enter the URL for your Heroku app into the Website URL section of the Facebook app settings page, hen you can visit your app on the web.
+Musician 'A' can schedule a session for Monday.  A message goes out to everyone and Musician's 'B' 
+and 'C' also sign up for the session.
 
+Then 'A' proposes that they practise Song 1.  The app will indicate that 'D' and 'E' are missing.  
+One of the musicians can call them and see if they are coming, or consider alternative musicians.
+
+
+Use case 2: Decide whether to show up
+Musician 'H' logs on and sees that no-one is showing for song 3.  So he decides not to attend
+
+
+Use case 3: Know what to practise for
+Musician 'I' registers for the session and sees that A,B,C are also coming.  He adds Song 4 for
+the session.  A,B,C get a message about this and practise the song before showing up
+
+Use case 4: Propose new songs (not fully fleshed out)
+
+
+
+Notifications:
+--------------
+The app will be a single coordination interface so everyone knows who is showing up for practise
+People can enable SMS notifications if they are not frequent facebook users
+People can obviously make phone calls to push others
